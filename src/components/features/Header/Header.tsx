@@ -5,6 +5,7 @@ import Wrapper from '@/components/layout/Wrapper';
 import { Box } from '@mui/material';
 interface Props {
     isHiddenGroupButtonHeader?: boolean;
+    isHiddenNavbar?: boolean;
 }
 export default function Header(props: Props) {
     const { isHiddenGroupButtonHeader = false } = props;
@@ -22,7 +23,13 @@ export default function Header(props: Props) {
                     <Box>
                         <Logo />
                     </Box>
-                    <Box>
+                    <Box
+                        sx={{
+                            visibility: props.isHiddenNavbar
+                                ? 'hidden'
+                                : 'visible',
+                        }}
+                    >
                         <Navigation />
                     </Box>
                     <Box

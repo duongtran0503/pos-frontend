@@ -5,9 +5,10 @@ import { Box } from '@mui/material';
 interface Props {
     children: React.ReactNode;
     isHiddenButtonheader?: boolean;
+    isHiddenNavBar?: boolean;
 }
 export function DefaultLayout(props: Props) {
-    const { children, isHiddenButtonheader } = props;
+    const { children, isHiddenButtonheader, isHiddenNavBar } = props;
     return (
         <Box>
             <Box
@@ -19,7 +20,10 @@ export function DefaultLayout(props: Props) {
                     zIndex: 1000,
                 }}
             >
-                <Header isHiddenGroupButtonHeader={isHiddenButtonheader} />
+                <Header
+                    isHiddenGroupButtonHeader={isHiddenButtonheader}
+                    isHiddenNavbar={isHiddenNavBar}
+                />
             </Box>
             <Box sx={{ marginTop: '70px', minHeight: '400px' }}>{children}</Box>
             <Footer />

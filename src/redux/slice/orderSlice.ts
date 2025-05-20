@@ -1,11 +1,11 @@
 import { localStorageName } from '@/constans/localStorage';
 import { OrderStatusEnum } from '@/constans/order';
 import { RootState } from '@/redux/store';
-import { BillType, OrderType } from '@/types/order';
+import { BillType, OrderDetailType } from '@/types/order';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface orderState {
-    listOrder: OrderType[];
+    listOrder: OrderDetailType[];
     totalPrice: number;
     totalProduct: number;
     orderStatus: OrderStatusEnum;
@@ -26,7 +26,7 @@ export const orderSilde = createSlice({
     name: 'order',
     initialState,
     reducers: {
-        addProduct(state, action: PayloadAction<OrderType>) {
+        addProduct(state, action: PayloadAction<OrderDetailType>) {
             const newProduct = [...state.listOrder, action.payload];
             const totalProduct = newProduct.length;
             const totalPrice = newProduct.reduce((total, curr) => {
@@ -45,14 +45,18 @@ export const orderSilde = createSlice({
                 listOrder: newProduct,
             };
         },
-        updateOrder(state, action: PayloadAction<OrderType>) {
+        updateOrder: (state, action: PayloadAction<OrderDetailType>) => {
             const { product, quantity } = action.payload;
             const existingOrderIndex = state.listOrder.findIndex(
                 (order) => order.product._id === product._id
             );
 
             if (existingOrderIndex !== -1) {
-                state.listOrder[existingOrderIndex].quantity = quantity;
+                state.listOrder = state.listOrder.map((order, index) =>
+                    index === existingOrderIndex
+                        ? { ...order, quantity: quantity }
+                        : order
+                );
             }
 
             state.totalPrice = state.listOrder.reduce((total, curr) => {
@@ -60,7 +64,7 @@ export const orderSilde = createSlice({
             }, 0);
             saveOrderToLocalStorage(state);
         },
-        deleteOrder(state, action: PayloadAction<OrderType>) {
+        deleteOrder(state, action: PayloadAction<OrderDetailType>) {
             state.listOrder = state.listOrder.filter(
                 (order) => order.product._id !== action.payload.product._id
             );

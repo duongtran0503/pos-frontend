@@ -17,6 +17,7 @@ import { CategoryType } from '@/types/category';
 interface Props {
     menuItems: CategoryType[];
 }
+const DISPLAY_ITEM_PREVIEW = 6;
 export default function Slider(props: Props) {
     const { menuItems } = props;
     const [isHover, setIsHover] = useState<boolean>(false);
@@ -34,19 +35,28 @@ export default function Slider(props: Props) {
             swiperRef.current.swiper.slideNext();
         }
     };
+
     return (
         <Box
             sx={{ position: 'relative', width: '100%' }}
             component={'div'}
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
+            onMouseEnter={() => {
+                if (menuItems.length > DISPLAY_ITEM_PREVIEW) {
+                    setIsHover(true);
+                }
+            }}
+            onMouseLeave={() => {
+                if (menuItems.length > DISPLAY_ITEM_PREVIEW) {
+                    setIsHover(false);
+                }
+            }}
         >
             <SwiperReact
                 navigation={{
                     nextEl: buttonNext.current,
                     prevEl: buttonPrev.current,
                 }}
-                slidesPerView={6}
+                slidesPerView={DISPLAY_ITEM_PREVIEW}
                 modules={[Navigation]}
                 className='mySwiper'
                 spaceBetween={'5px'}

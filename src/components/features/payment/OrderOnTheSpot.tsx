@@ -21,7 +21,7 @@ interface Props {
     loadingGetTable: boolean;
     handleChangeStatusLoadingTable: (value: boolean) => void;
 }
-export default function CommanderSurPlace(props: Props) {
+export default function OrderOnTheSpot(props: Props) {
     const [listTable, setLisTable] = useState<TableType[]>([]);
 
     useEffect(() => {

@@ -1,5 +1,5 @@
 'use client';
-import LoadingOrderItem from '@/components/common/LoadingProduct/LoadingOrderItem';
+import LoadingOrderItem from '@/components/common/Loading/LoadingOrderItem';
 import ItemOrder from '@/components/features/ListOrder/ItemOrder';
 import { orderSelector, updateListBill } from '@/redux/slice/orderSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/store';

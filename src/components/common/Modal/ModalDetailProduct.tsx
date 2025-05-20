@@ -41,7 +41,7 @@ export default function ModalDetailProduct(props: Props) {
         ) {
             toast.warn('Sản phẩm đã có trong giỏ hàng!');
         } else {
-            dispatch(addProduct({ product, quantity }));
+            dispatch(addProduct({ product, quantity, isNew: true }));
             toast.success(`Đã thêm ${product.name} vào giỏ hàng`);
         }
     };
@@ -127,31 +127,6 @@ export default function ModalDetailProduct(props: Props) {
                                     }}
                                 >
                                     <Box
-                                        sx={{
-                                            padding: '5px',
-                                            border: '1px solid gray',
-                                            display: 'flex',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            borderRadius: '20%',
-                                            '&:hover': {
-                                                boxShadow:
-                                                    ' rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
-                                            },
-                                        }}
-                                        component={'div'}
-                                        onClick={handleIncrease}
-                                    >
-                                        <IoAddOutline />
-                                    </Box>
-                                    <Box
-                                        sx={{
-                                            minWidth: '20px',
-                                        }}
-                                    >
-                                        <Typography>{quantity}</Typography>
-                                    </Box>
-                                    <Box
                                         onClick={handleDecrease}
                                         sx={{
                                             padding: '5px',
@@ -170,6 +145,32 @@ export default function ModalDetailProduct(props: Props) {
                                         }}
                                     >
                                         <RiSubtractFill />
+                                    </Box>
+
+                                    <Box
+                                        sx={{
+                                            minWidth: '20px',
+                                        }}
+                                    >
+                                        <Typography>{quantity}</Typography>
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            padding: '5px',
+                                            border: '1px solid gray',
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderRadius: '20%',
+                                            '&:hover': {
+                                                boxShadow:
+                                                    ' rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
+                                            },
+                                        }}
+                                        component={'div'}
+                                        onClick={handleIncrease}
+                                    >
+                                        <IoAddOutline />
                                     </Box>
                                 </Box>
                                 <Box>
