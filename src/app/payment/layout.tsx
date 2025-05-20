@@ -1,14 +1,21 @@
-import { DefaultLayout } from '@/components/layout/DefaultLayout/DefaultLayout';
 import { Box } from '@mui/material';
+import { Metadata } from 'next';
+import { ReactNode } from 'react';
 
-export default function HomeLayout({
+export const metadata: Metadata = {
+    title: 'Thanh toán',
+};
+export default function PaymentLayout({
     children,
+    modal,
 }: {
     children: React.ReactNode;
+    modal: ReactNode;
 }) {
     return (
-        <Box>
-            <DefaultLayout>{children}</DefaultLayout>
+        <Box sx={{ marginTop: '70px', minHeight: '400px' }}>
+            {children}
+            {modal}
         </Box>
     );
 }

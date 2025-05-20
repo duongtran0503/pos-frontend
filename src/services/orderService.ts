@@ -9,8 +9,11 @@ import axios, { AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
 
 const orderService = () => {
-    const token = getAccessToken() ?? '';
+    let token = getAccessToken() || '';
     return {
+        setToken(newToken:string) {
+           token = newToken;
+        },
         async createOrder(
             data: CreateOrderSchemaType
         ): Promise<BillType | null> {

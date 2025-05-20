@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import orderReducer from '@/redux/slice/orderSlice';
+import paymentReducer from '@/redux/slice/paymentSlice';
 import { configureStore } from '@reduxjs/toolkit';
 export const store = configureStore({
     reducer: {
         order: orderReducer,
+        payment: paymentReducer,
     },
 });
 

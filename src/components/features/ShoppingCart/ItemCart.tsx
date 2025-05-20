@@ -2,7 +2,7 @@
 import ConfirmDialog from '@/components/common/Dialog/ConfirmDialog';
 import { deleteOrder, updateOrder } from '@/redux/slice/orderSlice';
 import { useAppDispatch } from '@/redux/store';
-import { OrderType } from '@/types/order';
+import { OrderDetailType } from '@/types/order';
 import formatPriceToVND from '@/utils/formatPriceToVND';
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { IoAddOutline } from 'react-icons/io5';
 import { RiDeleteBin6Line, RiSubtractFill } from 'react-icons/ri';
 interface Props {
-    order: OrderType;
+    order: OrderDetailType;
 }
 export default function ItemCart(props: Props) {
     const { order } = props;
@@ -22,6 +22,7 @@ export default function ItemCart(props: Props) {
             updateOrder({
                 product: order.product,
                 quantity: order.quantity + 1,
+                isNew: true,
             })
         );
     };
@@ -31,6 +32,7 @@ export default function ItemCart(props: Props) {
                 updateOrder({
                     product: order.product,
                     quantity: order.quantity - 1,
+                    isNew: true,
                 })
             );
         }
@@ -163,12 +165,15 @@ export default function ItemCart(props: Props) {
                                     boxShadow:
                                         ' rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
                                 },
+                                ':disabled': {
+                                    background: 'gray',
+                                },
                             }}
-                            component={'div'}
-                            onClick={handleIncrease}
+                            onClick={handleDecrease}
                         >
-                            <IoAddOutline />
+                            <RiSubtractFill />
                         </Box>
+
                         <Box
                             sx={{
                                 minWidth: '20px',
@@ -188,13 +193,11 @@ export default function ItemCart(props: Props) {
                                     boxShadow:
                                         ' rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
                                 },
-                                ':disabled': {
-                                    background: 'gray',
-                                },
                             }}
-                            onClick={handleDecrease}
+                            component={'div'}
+                            onClick={handleIncrease}
                         >
-                            <RiSubtractFill />
+                            <IoAddOutline />
                         </Box>
                     </Box>
                     <Box>

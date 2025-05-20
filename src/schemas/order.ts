@@ -8,6 +8,7 @@ export const OrderDetailSchema = z.object({
     product: z.string().regex(objectIdRegex, 'id không hợp lệ!'),
     quantity: z.number().min(1, 'Số lượng tối thiếu là 1!'),
     notes: z.string().optional(),
+    isNew: z.boolean().default(false),
 });
 
 export const CreateOrderSchema = z.object({
@@ -32,6 +33,15 @@ export const UpdateOrderSchema = z
     .object({
         status: z.nativeEnum(OrderStatusEnum).optional(),
         paymentStatus: z.nativeEnum(PaymentStatusEnum),
+        orderDetails: z.array(OrderDetailSchema).min(1).optional(),
+        totalAmount: z.number().min(0).optional(),
+        table: z.string().optional(),
+        discountAmount: z.number().min(0).optional(),
+        finalAmount: z.number().min(0).optional(),
+        orderType: z.nativeEnum(OrderTypeEnum).optional(),
+        staffNotes: z.string().optional(),
+        customNotes: z.string().optional(),
+        paymentDate: z.date().optional(),
     })
     .strict();
 

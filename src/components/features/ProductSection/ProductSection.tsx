@@ -1,5 +1,5 @@
 'use client';
-import LoadingProduct from '@/components/common/LoadingProduct/LoadingProduct';
+import LoadingProduct from '@/components/common/Loading/LoadingProduct';
 import ProductList from '@/components/features/ProductList/ProductList';
 import Wrapper from '@/components/layout/Wrapper';
 import { ProductTypeEnum, SortProductBy } from '@/constans/product';

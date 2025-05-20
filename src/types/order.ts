@@ -1,14 +1,19 @@
-import { ProductType } from '@/types/product';
+import { defaultValueProductType, ProductType } from '@/types/product';
 import { TableType } from '@/types/table';
 
-export interface OrderType {
+export interface OrderDetailType {
     product: ProductType;
     quantity: number;
+    isNew: boolean;
 }
-
+export const OrderDetailDefaultValue: OrderDetailType = {
+    product: defaultValueProductType,
+    quantity: 0,
+    isNew: true,
+};
 export interface BillType {
     _id: string;
-    orderDetails: OrderType[];
+    orderDetails: OrderDetailType[];
     table: TableType;
     totalAmount: number;
     discountAmount: number;
@@ -19,7 +24,7 @@ export interface BillType {
     customNotes?: string;
     paymentStatus: string;
     paymentDate?: string;
-    updateAt: string;
+    updatedAt: string;
     createdAt: string;
     [key: string]: unknown;
 }
@@ -42,6 +47,6 @@ export const defaultBill: BillType = {
     customNotes: '',
     paymentStatus: '',
     paymentDate: undefined,
-    updateAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
     createdAt: new Date().toISOString(),
 };

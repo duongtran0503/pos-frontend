@@ -1,5 +1,5 @@
 'use client';
-import LoadingOrder from '@/components/common/LoadingProduct/LoadingOrder';
+import LoadingOrder from '@/components/common/Loading/LoadingOrder';
 import { OrderStatusEnum } from '@/constans/order';
 import { PaymentStatusEnum } from '@/constans/payment';
 import { updateBill } from '@/redux/slice/orderSlice';

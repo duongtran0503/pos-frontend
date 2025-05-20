@@ -12,7 +12,12 @@ const authService = () => {
             try {
                 const res: AxiosResponse<ApiResponse<LoginType>> =
                     await axiosClient.post(apiEndpoints.auth.login, data);
-                console.log(res);
+                console.log(res.data);
+                if (res.data.isSuccess) {
+                    await axios.post('http://localhost:3000/api/auth', {
+                        token: res.data.data?.token,
+                    });
+                }
                 return res.data.data || { token: '' };
             } catch (error) {
                 if (axios.isAxiosError(error)) {

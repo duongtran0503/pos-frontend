@@ -8,13 +8,22 @@ const nextConfig: NextConfig = {
                 hostname: 'firebasestorage.googleapis.com',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'img.vietqr.io',
+                pathname: '/**',
+            },
         ],
     },
     async rewrites() {
         return [
             {
-                source: '/thanh-toan',
-                destination: '/payment',
+                source: '/thanh-toan/:id',
+                destination: '/payment/:id',
+            },
+            {
+                source: '/thanh-toan/goi-them-mon-khac/:id',
+                destination: '/payment/add/:id',
             },
             {
                 source: '/dat-mon',

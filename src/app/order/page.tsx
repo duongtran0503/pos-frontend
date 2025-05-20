@@ -1,5 +1,5 @@
 import ListProductOrder from '@/components/features/order/ListProductOrder';
-import Payment from '@/components/features/payment/Payment';
+import OrderMethod from '@/components/features/order/OrderMethod';
 import Wrapper from '@/components/layout/Wrapper';
 import { Box, Grid } from '@mui/material';
 
@@ -13,7 +13,7 @@ export default function OrderPage() {
                             <ListProductOrder />
                         </Grid>
                         <Grid size={{ xs: 4 }}>
-                            <Payment />
+                            <OrderMethod />
                         </Grid>
                     </Grid>
                 </Box>
