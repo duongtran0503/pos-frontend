@@ -16,7 +16,6 @@ import {
 import formatPriceToVND from '@/utils/formatPriceToVND';
 import { Box, Button, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { IoAddOutline } from 'react-icons/io5';
 import { RiSubtractFill } from 'react-icons/ri';
@@ -30,7 +29,7 @@ export default function NewProductOfOrder(props: Props) {
     const [orderActive, setOrderActive] = useState<OrderDetailType>(
         OrderDetailDefaultValue
     );
-    const router = useRouter();
+
     const orders = useAppSelector(paymentSelector);
     const dispatch = useAppDispatch();
     const handleIncrease = (order: OrderDetailType) => {
