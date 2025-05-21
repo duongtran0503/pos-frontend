@@ -20,6 +20,7 @@ import {
     Typography,
 } from '@mui/material';
 import { nanoid } from 'nanoid';
+import Link from 'next/link';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { GrUpdate } from 'react-icons/gr';
 import { IoIosAddCircle } from 'react-icons/io';
@@ -131,26 +132,28 @@ export default function ModalAdminEditOrder(props: Props) {
                                 marginTop: '10px',
                             }}
                         >
-                            <Button
-                                startIcon={<IoIosAddCircle />}
-                                sx={{
-                                    background: 'white',
-                                    color: 'black',
-                                    fontSize: '14px',
-                                    textTransform: 'lowercase',
-                                    borderRadius: '8px',
-                                    boxShadow:
-                                        ' rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;',
-
-                                    '&:hover': {
+                            <Link href={'/'}>
+                                <Button
+                                    startIcon={<IoIosAddCircle />}
+                                    sx={{
+                                        background: 'white',
+                                        color: 'black',
+                                        fontSize: '14px',
+                                        textTransform: 'lowercase',
+                                        borderRadius: '8px',
                                         boxShadow:
-                                            ' rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;',
-                                    },
-                                    width: '200px',
-                                }}
-                            >
-                                Thêm món ăn mới vào
-                            </Button>
+                                            ' rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;',
+
+                                        '&:hover': {
+                                            boxShadow:
+                                                ' rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;',
+                                        },
+                                        width: '200px',
+                                    }}
+                                >
+                                    Thêm món ăn mới vào
+                                </Button>
+                            </Link>
                         </Box>
                     </Box>
                 </Grid>

@@ -27,7 +27,14 @@ export const orderSilde = createSlice({
     initialState,
     reducers: {
         addProduct(state, action: PayloadAction<OrderDetailType>) {
-            const newProduct = [...state.listOrder, action.payload];
+            const newProduct = [
+                ...state.listOrder,
+                {
+                    product: action.payload.product,
+                    quantity: action.payload.quantity,
+                    isNew: true,
+                },
+            ];
             const totalProduct = newProduct.length;
             const totalPrice = newProduct.reduce((total, curr) => {
                 return total + curr.product.price * curr.quantity;
